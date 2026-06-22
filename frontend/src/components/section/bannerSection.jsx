@@ -8,9 +8,8 @@ import {
 
 import { Skeleton } from "../atom/skeleton";
 import { Suspense } from "react";
-import Link from "next/link";
 import Image from "next/image";
-import { Media, getWatchUrl } from "@/lib/api";
+import { Media } from "@/lib/api";
 import { Box } from "lucide-react";
 
 function BannerSection({fetcher}) {
@@ -33,7 +32,6 @@ async function BannerSectionData({fetcher}) {
       <CarouselContent className="h-137.5">
         {data.map((element)=>{
             return <CarouselItem className="w-full max-w-115 h-137.5" key={element?.id}>
-            <Link href={getWatchUrl(element?.id,element?.media_type,element?.poster_path)}>
             <Image
                 src = {Media(element?.poster_path)}
                 alt = {`${element?.title} poster`}
@@ -41,8 +39,7 @@ async function BannerSectionData({fetcher}) {
                 width={460}
                 height={550}
                 priority
-            />
-            </Link>
+            />            
         </CarouselItem>
             })
         }

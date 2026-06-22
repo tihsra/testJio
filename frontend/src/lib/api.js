@@ -34,11 +34,6 @@ const ENDPOINTS = {
     dramaTv: '/tv/drama',
     crimeTv: '/tv/crime',
 
-    // Details
-
-    getMovieDetails: (id) => `/movies/details?id=${id}`,
-    getTvShowsDetails: (id) => `/tv/details?id=${id}`,
-
     // Payment
 
     createOrder: '/payment/createOrder',
@@ -46,9 +41,7 @@ const ENDPOINTS = {
 
     //user
 
-    userDetail:'/user/',
-    getWishlist:'/user/wishlist',
-    addToWishlist:'/user/updateWishList'
+    userDetail:'/user/'
 
 }
 
@@ -56,14 +49,9 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 const Media = (path) => `https://image.tmdb.org/t/p/original` + path;
 
-const getWatchUrl = (id,mediaType,poster_path) => {
-    const prefix = mediaType === "tv" ? "tv" : "movies";
-    return `/${prefix}/watch?id=${id}&poster_path=${poster_path}`;
-}
-
 const API = axios.create({
     baseURL: API_BASE_URL,
     withCredentials: true,
 })
 
-export { ENDPOINTS, API_BASE_URL, API, Media, getWatchUrl};
+export { ENDPOINTS, API_BASE_URL, API, Media};
