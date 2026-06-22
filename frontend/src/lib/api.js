@@ -41,7 +41,12 @@ const ENDPOINTS = {
 
     //user
 
-    userDetail:'/user/'
+    user: "/user",
+    addToWishlist: "/user/updateWishList",
+    getWishlist: "/user/wishlist",
+
+    getMovieDetails: (id) => `/movies/details?id=${id}`,
+    getTvShowsDetails: (id) => `/tv/details?id=${id}`,
 
 }
 
@@ -54,4 +59,9 @@ const API = axios.create({
     withCredentials: true,
 })
 
-export { ENDPOINTS, API_BASE_URL, API, Media};
+export function getWatchUrl(vidId, mediaType, poster_path) {
+    const prefix = mediaType === "tv" ? "tv" : "movies";
+    return `${prefix}/watch?id=${vidId}&poster_path=${poster_path}`;
+}
+
+export { ENDPOINTS, API_BASE_URL, API, Media, getWatchUrl};
