@@ -1,0 +1,16 @@
+a) Backend
+
+1) for discover route write getDetail thing
+    3) Wishlist
+    4) VideoPlayer things
+    5) Seperate API route for tv and movies banner
+
+b) Frontend
+    
+    1) suspense etc in category section
+    2) categories section fetcher shoudl be handeles in try catcgh
+    2) watch page for trailers
+    3) watchlist page
+    4) jio+ page
+
+
