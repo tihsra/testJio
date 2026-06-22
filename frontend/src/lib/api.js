@@ -41,7 +41,7 @@ const ENDPOINTS = {
 
     //user
 
-    user: "/user",
+    userDetail: "/user",
     addToWishlist: "/user/updateWishList",
     getWishlist: "/user/wishlist",
 
