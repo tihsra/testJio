@@ -89,7 +89,7 @@ const loginHandler = async function(req,res){
 
         try{
             const jwtToken = await promisifiedSign({email:userObject.email},process.env.SECRET_JWT);
-            res.cookie("userJWTtoken",jwtToken,{maxAge:60*60*24*1000, httpOnly:true});
+            res.cookie("userJWTtoken",jwtToken,{maxAge:60*60*24*1000, httpOnly:true, secure:true, sameSite:"none"});
 
             const safeUser = actualUser.toObject();
             delete safeUser.password;
