@@ -67,7 +67,7 @@ export default function Tv() {
       <SectionNavigator dataList={dataList}/>
       <BannerSection fetcher={tvBannerDataFetcher}></BannerSection>
         {dataList.map((element,index)=>{
-          return <CategoryNavigator key={index} name={element.name} href={element.href} fetcher={element.fetcher}/>
+          return <CategoryNavigator type="tv" key={index} name={element.name} href={element.href} fetcher={element.fetcher}/>
         })
       }
       </>

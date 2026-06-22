@@ -67,7 +67,7 @@ export default function Movies() {
       <SectionNavigator dataList={dataList}/>
       <BannerSection fetcher={moviesBannerDataFetcher}></BannerSection>
         {dataList.map((element,index)=>{
-          return <CategoryNavigator key={index} name={element.name} href={element.href} fetcher={element.fetcher}/>
+          return <CategoryNavigator type="movies" key={index} name={element.name} href={element.href} fetcher={element.fetcher}/>
         })
       }
       </>
