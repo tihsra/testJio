@@ -11,7 +11,7 @@ export default async function CategoryNavigator({fetcher,name,href}){
     </div>
 }
 
-async function CategoryContent(type, {fetcher}){
+async function CategoryContent({type, fetcher}){
     const requestedData = await fetcher();
 
     if(!requestedData||requestedData.length==0){
