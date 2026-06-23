@@ -1,4 +1,3 @@
-const path = require("path");
 const util = require('util');
 const bcrypt = require('bcrypt');
 const dotenv = require("dotenv");
@@ -37,10 +36,7 @@ const signupHandler = async function(req,res){
     }
 
     try{
-        const templatePath = path.join(
-            __dirname,
-            "../template/welcome.html"
-        );
+        const templatePath = "../template/welcome.html"
 
         const createUser = await userModel.create(userObject);
         await sendEmailservice(templatePath,createUser.email,{name:createUser.name},"sign");
@@ -176,10 +172,7 @@ const forgotPasswordHandler = async function(req,res){
 
         await actualUser.save({validateBeforeSave : false});
 
-        const templatePath = path.join(
-            __dirname,
-            "../template/otp.html"
-        );
+        const templatePath = "../template/otp.html"
 
         const templateData = { name: actualUser.name, otp: actualUser.otp }
         await sendEmailservice(templatePath, actualUser.email, templateData, "otp");
