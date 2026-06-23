@@ -36,7 +36,7 @@ const signupHandler = async function(req,res){
     }
 
     try{
-        const templatePath = "../template/welcome.html"
+        const templatePath = path.join(__dirname, './template/welcome.html');
 
         const createUser = await userModel.create(userObject);
         await sendEmailservice(templatePath,createUser.email,{name:createUser.name},"sign");
@@ -172,7 +172,7 @@ const forgotPasswordHandler = async function(req,res){
 
         await actualUser.save({validateBeforeSave : false});
 
-        const templatePath = "../template/otp.html"
+        const templatePath = path.join(__dirname, './template/otp.html');
 
         const templateData = { name: actualUser.name, otp: actualUser.otp }
         await sendEmailservice(templatePath, actualUser.email, templateData, "otp");
@@ -264,7 +264,12 @@ const resetPasswordHandler = async function(req,res){
 const logoutHandler = function(req,res){
 
     try{
-        res.clearCookie("userJWTtoken",{path: "/"})
+        res.clearCookie("userJWTtoken",{
+            path: "/",
+            httpOnly: true,
+            secure: true,
+            sameSite: "none"
+        })
         res.status(200).json({
             "status": "success",
             "message": "Successfully logged-out"
