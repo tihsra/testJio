@@ -28,7 +28,7 @@ mongoose.connect(url)
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: "https://test-jio.vercel.app",
+    origin: ["https://test-jio.vercel.app","http://localhost:3500"],
     credentials: true
 }));
 
