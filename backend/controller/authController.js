@@ -37,7 +37,7 @@ const signupHandler = async function(req,res){
 
     try{
         const createUser = await userModel.create(userObject);
-        await sendEmailservice('./template/welcome.html',createUser.email,{name:createUser.name},"sign")
+        await sendEmailservice('../template/welcome.html',createUser.email,{name:createUser.name},"sign")
 
         const safeUser = createUser.toObject();
         delete safeUser.password;
@@ -171,7 +171,7 @@ const forgotPasswordHandler = async function(req,res){
         await actualUser.save({validateBeforeSave : false});
 
         const templateData = { name: actualUser.name, otp: actualUser.otp }
-        await sendEmailservice("./template/otp.html", actualUser.email, templateData, "otp");
+        await sendEmailservice("../template/otp.html", actualUser.email, templateData, "otp");
 
         return res.status(200).json({
                 status: "success",
