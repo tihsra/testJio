@@ -1,9 +1,0 @@
-a) Backend
-1) video Player
-
-b) Frontend
-1) suspense etc in category section
-2) categories section fetcher shoudl be handeles in try catcgh
-3) jio+ page
-4) 
-
